@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+:root {
+    --bg-color: #68bae3;
+    --nav-bg-color:  #003060;
+    --card-color: #055C9D;
+    --fs-sm: 12px;
+    --fs-md: 16px;
+    --fs-lg: 24px;
+    --fs-xlg: 34px;
+    --fw-sm: 200;
+    --fw-md: 400;
+    --fw-la: 700;
+    --fw-xl: 800;
+    --padding-bk-sm: 5px;
+    --padding-bk-md: 10px;
+    --padding-bk-x: 20px;
+    --padding-large: 120px;
+    --border-radius: 8px;
+    --shadow: rgba(0, 0, 0) 0px 1px 4px;
+}
+
+/* <span class="material-symbols-outlined">
+delete
+</span>
+ */
+
+/* 
+Baby Blue
+#68BBE3
+
+Blue Grotto
+#0E86D4
+
+Blue
+#055C9D
+
+Navy Blue
+#003060
+*/
+
+*,
+*::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+a,
+img,
+button,
+input,
+label {
+    display: block;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: var(--fs-md);
+    background-color: var(--bg-color);
+}
+
+
+/**
+--Reusable Code
+*/
+
+
+
+/* Header */
+
+
+.header {
+    background-color: var(--nav-bg-color);
+    padding-block: var(--padding-bk-x);
+    padding-inline: var(--padding-bk-x);
+    color: white;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: var(--padding-bk-x);
+}
+
+.header .container .logo {
+    font-size: var(--fs-xlg);
+    font-weight: var(--fw-xl);
+}
+
+
+
+
+.header .container .nav-list {
+    padding-block: 10px;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-md);
+    padding-inline: var(--padding-bk-md);
+    border-radius: var(--border-radius);
+    background-color: var(--card-color);
+    border: none;
+    outline: none;
+    color: white;
+    font-size: var(--fs-lg);
+}
+
+
+
+.header .nav-list.active .login,
+.header .nav-list .logout {
+    display: none;
+}
+
+
+.header .nav-list .login,
+.header .nav-list.active .logout {
+    display: block;
+}
+
+
+
+
+/* MAIN */
+
+main .container {
+    position: relative;
+}
+
+
+.modal {
+    /* display: none; */
+    background-color: rgba(255, 255, 255, 0.856);
+    z-index: 1;
+    position: fixed;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 10px ;
+    padding-block: 20px;
+    padding-inline: 20px;
+}
+
+.modal {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+
+.modal form h2{
+    text-align: center;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-la);
+    padding-block: var(--padding-bk-sm);
+}
+
+.modal form .input-file {
+    margin-block: 0;
+    margin-inline: 0;
+    padding-block: var(--padding-bk-sm);
+    padding-inline-start: var(--padding-bk-sm);
+}
+
+.modal form input {
+    width: 100%;
+    margin-block: var(--padding-bk-x);
+    padding-block: var(--padding-bk-x);
+    padding-inline-start: var(--padding-bk-x);
+    outline: none;
+    border: none;
+    min-width: 200px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.modal form .input:is(:focus, :hover) {
+    background-color: rgba(0, 0, 0, 0.137);
+    
+}
+
+
+.modal form input::placeholder {
+    font-size: 18px;
+    color: rgba(36, 34, 34, 0.685);
+}
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.checkbox {
+    border: 1 px solid green;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    accent-color: white;
+}
+
+.checkbox-container .check-label {
+    border: 1 px solid red;
+    text-align: right;
+}
+
+.submit-btn {
+    width: 100%;
+    padding-block: var(--padding-bk-md);
+    font-size: 18px;
+    font-weight: var(--fw-md);
+    border-radius: var(--border-radius);
+    border: none;
+
+}
+
+.submit-btn:is(:focus, :hover) {
+    background-color: rgba(0, 0, 0, 0.137);
+
+}
+
+/* To show when the add button clicked */
+
+.overlay {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+.overlay.active {
+    display: none; 
+}
+
+
+.add-btn {
+    background-color: transparent;
+    color: white;
+    padding-block: var(--padding-bk-md) ;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: var(--fs-md);
+    text-align: center;
+    padding-inline: var(--padding-bk-md) ;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%) scale(1);
+}
+
+.add-btn:hover {
+    background-color: rgba(220, 220, 220, 0.507);
+    color: black;
+   
+}
+
+
+.content {
+    color: white;
+    margin-block-start: var(--padding-large)
+}
+
+
+
+
