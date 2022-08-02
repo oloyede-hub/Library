@@ -96,11 +96,19 @@ const createBookCard = (book) => {
     deleIcon.classList.add("material-symbols-outlined");
     
     titleElement.textContent = book.title;
-    imageElement.src = URL.createObjectURL(book.image);
+    // if(book.image.length > 1){
+    //     for (let i = 0; i < book.image.length; i++) {
+    //         const image = book.image[i];
+    //         imageElement.src = URL.createObjectURL(image);
+            
+    //     }
+    // }else {
+    // }
+    imageElement.src = window.URL.createObjectURL(book.image);
     authorElement.textContent = book.author;
     pageElement.textContent = `${book.pages} pages`;
     deleIcon.textContent = "delete";
-
+    removeButton.onclick = library.removeBook;
 
     if(book.isRead) {
         readButton.textContent = "Read"

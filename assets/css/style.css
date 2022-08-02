@@ -281,15 +281,17 @@ main .container {
 .content {
     color: white;
     margin-block-start: 100px;
-    padding-inline: var(--padding-bk-x);
+    padding-inline: 30px;
     display: grid;
+    min-height: 90vh;
     max-width: 100%;
     gap: 30px;
+    padding-block-end: 30px;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .book-card {
-    width: 250px;
+    width: 300px;
     height: 350px;
     background-color: #0d213d; 
     padding-inline: var(--padding-bk-md);
@@ -336,5 +338,25 @@ main .container {
 
 
 
+footer {
+
+    background-color: rgba(6, 5, 63, 0.747); 
+    color: wheat;
+}
+
+
+footer .footer-content {
+   display: flex;
+   padding-block: var(--padding-bk-x);
+    justify-content: center;
+    text-align: center;
+    font-size: var(--fs-md);
+    
+}
+
+footer .footer-content a{
+    color: rgb(124, 124, 206);
+    padding-left: 10px;
+}
 
 
