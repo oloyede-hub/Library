@@ -18,7 +18,7 @@
     <header class="header">
         <div class="container">
             <p class="logo">Library</p>
-            <button class="nav-list">
+            <button class="nav-list" data-login-toggle>
                 <div class="nav-link login">Login</div>
                 <div class="nav-link logout">Logout</div>
             </button>
@@ -27,31 +27,38 @@
 
     <main>
         <div class="container">
-            <button style="display: inline-flex; align-items:center;" class="add-btn"><span
-                    class="material-symbols-outlined add">add</span> <p>Add New Book</p>
+
+
+            <button class="add-btn" data-addNewBook><span class="material-symbols-outlined add">add</span>New Book
             </button>
 
-            <div class="overlay"></div>
-            <div class="modal">
-                <form action="">
+
+
+            <div class="overlay" data-overlay></div>
+            <div class="modal" data-modal>
+                <form data-form>
                     <h2>New Book</h2>
 
-                    <label for="book-image">Cover Image:</label>
-                    <input type="file" name="book-image" id="book-image" class="input-file">
+                    <label for="book-image">Choose Image</label>
+                    <input type="file" name="book-image" id="book-image" class="input-file" style="opacity: 0;" data-image>
 
-                    <input class="input" type="text" name="book-image" id="book-image" placeholder="Title">
-                    <input class="input" type="text" name="book-image" id="book-image" placeholder="Author">
+                    <input class="input" type="text" name="title" id="title" placeholder="Title" max="25" required data-title>
+                    <input class="input" type="text" name="author" id="author" placeholder="Author" max="25" required
+                        data-author>
+                    <input class="input" type="number" style="padding-inline-end: 20px;" max="10" name="pages" id="pages"
+                        placeholder="Pages" data-pages required>
 
                     <div class="checkbox-container">
                         <label class="check-label" for="read-it">Have you read it?</label>
-                        <input type="checkbox" name="read" id="read-it" aria-label="read it" class="checkbox"
-                            placeholder="read it">
+                        <input type="checkbox" name="isRead" id="isRead" aria-label="read it" class="checkbox"
+                            placeholder="read it" data-isRead required>
                     </div>
-                    <button class="submit-btn" type="submit">Add</button>
+                    <button class="submit-btn" type="submit" data-submit-book>Add</button>
                 </form>
             </div>
-            <div class="content">
 
+            <div>
+                <div class="content" data-content></div>
             </div>
         </div>
     </main>

@@ -39,6 +39,10 @@ Navy Blue
 #003060
 */
 
+colgroup {
+color: #68BBE3;
+}
+
 *,
 *::before,
 ::after {
@@ -70,22 +74,13 @@ button {
     cursor: pointer;
 }
 
-
 body {
     font-family: "Roboto", sans-serif;
     font-size: var(--fs-md);
     background-color: var(--bg-color);
 }
 
-
-/**
---Reusable Code
-*/
-
-
-
 /* Header */
-
 
 .header {
     background-color: var(--nav-bg-color);
@@ -152,8 +147,8 @@ main .container {
 
 .modal {
     /* display: none; */
-    background-color: rgba(255, 255, 255, 0.856);
-    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    z-index: 2;
     position: fixed;
     width: 400px;
     top: 50%;
@@ -164,8 +159,8 @@ main .container {
     padding-inline: 20px;
 }
 
-.modal {
-    transform: translate(-50%, -50%) scale(0);
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 
@@ -185,6 +180,7 @@ main .container {
 
 .modal form input {
     width: 100%;
+    text-transform: capitalize;
     margin-block: var(--padding-bk-x);
     padding-block: var(--padding-bk-x);
     padding-inline-start: var(--padding-bk-x);
@@ -221,7 +217,6 @@ main .container {
 }
 
 .checkbox-container .check-label {
-    border: 1 px solid red;
     text-align: right;
 }
 
@@ -240,8 +235,6 @@ main .container {
 
 }
 
-/* To show when the add button clicked */
-
 .overlay {
     display: none;
     position: fixed;
@@ -252,23 +245,27 @@ main .container {
     background-color: rgba(0, 0, 0, 0.7); 
 }
 .overlay.active {
-    display: none; 
+    display: block; 
 }
 
 
 .add-btn {
-    background-color: transparent;
+    background-color: rgba(21, 194, 21, 0.582);
+    display: inline-flex;
+    align-items: center;
     color: white;
     padding-block: var(--padding-bk-md) ;
     border: none;
     outline: none;
+    z-index: 1;
     border-radius: 10px;
     font-size: var(--fs-md);
     text-align: center;
     padding-inline: var(--padding-bk-md) ;
-    position: absolute;
+    position: fixed;
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, 50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .add-btn:hover {
@@ -278,10 +275,65 @@ main .container {
 }
 
 
+
+/* CONTENT */
+
 .content {
     color: white;
-    margin-block-start: var(--padding-large)
+    margin-block-start: 100px;
+    padding-inline: var(--padding-bk-x);
+    display: grid;
+    max-width: 100%;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
+
+.book-card {
+    width: 250px;
+    height: 350px;
+    background-color: #0d213d; 
+    padding-inline: var(--padding-bk-md);
+    padding-block: var(--padding-bk-x);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+
+}
+
+.book-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-container .book-img {
+    width: 100%;
+    height: 100px;
+    border-radius: var(--border-radius);
+}
+
+.book-container .title, .author, pages {
+    width: 100%;
+    align-self: left;
+    padding-block: var(--padding-bk-md);
+}
+
+.book-container .btn {
+    background-color: white;
+    outline: none;
+    border: none;
+    padding-block: var(--padding-bk-md);
+    margin-block: var(--padding-bk-md);
+    width:100%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.material-symbols-outlined {
+    font-size: 16px;
+}
+
 
 
 
