@@ -1,20 +1,31 @@
 
-function Book(image, pages, title , author , isRead) {
-    this.image = image;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
+
+class Book {
+    constructor(
+    image,
+    pages = '0',
+    title = 'Unknown',
+    author = 'Unknown',
+    isRead = false
+    ) {
+        this.image = image;
+        this.pages = pages;
+        this.title = title;
+        this.author = author;
+        this.isRead = isRead;
+    }
 }
 
 
-function Library() {
-    this.books = [];
-    this.addNewBook = function (newBook) {
+class Library {
+    constructor() {
+        this.books = [];
+    }
+    addNewBook(newBook) {
         this.books.push(newBook)
     }
-    this.removeBook = function (title) {
-        this.books = this.books.filter((book) => book.title !== title)
+    removeBook(title) {
+        this.books = this.books.filter((book) => book.title !== title);
     }
 }
 
@@ -95,7 +106,7 @@ const createBookCard = (book) => {
     removeButton.classList.add("btn")
     deleIcon.classList.add("material-symbols-outlined");
     
-    titleElement.textContent = book.title;
+    titleElement.textContent = `Title: ${book.title}`;
     // if(book.image.length > 1){
     //     for (let i = 0; i < book.image.length; i++) {
     //         const image = book.image[i];
@@ -104,9 +115,13 @@ const createBookCard = (book) => {
     //     }
     // }else {
     // }
-    imageElement.src = window.URL.createObjectURL(book.image);
-    authorElement.textContent = book.author;
-    pageElement.textContent = `${book.pages} pages`;
+    if(book.image) {
+        imageElement.src = window.URL.createObjectURL(book.image);
+    }else {
+        imageElement.src = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn1.vectorstock.com%2Fi%2F1000x1000%2F50%2F20%2Fno-photo-or-blank-image-icon-loading-images-vector-37375020.jpg&imgrefurl=https%3A%2F%2Fwww.vectorstock.com%2Froyalty-free-vector%2Fno-photo-or-blank-image-icon-loading-images-vector-37375020&tbnid=b5-4hKfVwh-z0M&vet=12ahUKEwikmtuS_cD5AhVYgc4BHRGqB2EQMygEegUIARDuAQ..i&docid=GF-jQq9zrRm4dM&w=1000&h=976&q=blank%20image&ved=2ahUKEwikmtuS_cD5AhVYgc4BHRGqB2EQMygEegUIARDuAQ"
+    }
+    authorElement.textContent = `Title: ${book.author} `;
+    pageElement.textContent = `Pages: ${book.pages} pages`;
     deleIcon.textContent = "delete";
     removeButton.onclick = library.removeBook;
 
@@ -126,6 +141,7 @@ const createBookCard = (book) => {
     BookContainer.appendChild(imageElement)
     BookContainer.appendChild(titleElement)
     BookContainer.appendChild(authorElement)
+    BookContainer.appendChild(pageElement)
     BookContainer.appendChild(readButton);
     BookContainer.appendChild(removeButton)
     removeButton.appendChild(deleIcon);
@@ -135,10 +151,10 @@ const createBookCard = (book) => {
 
 const getInputData = () => {
     const ImageInput = document.querySelector("[data-image]").files[0];
-    const titleInput = document.querySelector("[data-title]").value;
-    const authorInput = document.querySelector("[data-author]").value;
-    const pagesInput = document.querySelector("[data-pages]").value;
-    const isReadInput = document.querySelector("[data-isRead]").checked;
+    const titleInput = document.querySelector("[data-title]").value || "Unkown";
+    const authorInput = document.querySelector("[data-author]").value || "Unkown";
+    const pagesInput = document.querySelector("[data-pages]").value || "0";
+    const isReadInput = document.querySelector("[data-isRead]").checked || false;
     return new Book(ImageInput, pagesInput, titleInput, authorInput, isReadInput);
 }
 
@@ -164,6 +180,8 @@ const addCurrentNewBook = (e) => {
     if(!newBook.pages && !newBook.title && !newBook.author){
         return;
     }
+
+    console.log(newBook)
     library.addNewBook(newBook);
     updateBooksGrid();
     cancelOverLay();

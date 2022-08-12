@@ -314,7 +314,7 @@ main .container {
     border-radius: var(--border-radius);
 }
 
-.book-container .title, .author, pages {
+.book-container .title, .author, .pages {
     width: 100%;
     align-self: left;
     padding-block: var(--padding-bk-md);
