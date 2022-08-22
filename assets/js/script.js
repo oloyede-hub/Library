@@ -165,6 +165,7 @@ const addCurrentNewBook = (e) => {
         return;
     }
     library.addNewBook(newBook);
+    checkValidation();
     updateBooksGrid();
     cancelOverLay();
     form.reset();
@@ -173,6 +174,35 @@ const addCurrentNewBook = (e) => {
 
 
 submitBtn.addEventListener("click", addCurrentNewBook);
+
+// Validation
+
+
+const checkValidation = () => {
+    const inputs = document.querySelectorAll("input");
+    const form = document.querySelector("form");
+
+    inputs.forEach((input) => {
+        if(input.validity.valueMissing) {
+            input.setCustomValidity("Enter the correct value")
+            input.reportValidity();
+        }else {
+            input.setCustomValidity("");
+        }
+    })
+
+    form.addEventListener("submit", () => {
+        
+        inputs.forEach(input => {
+            if(!input.validity.valid) {
+                input.setCustomValidity("value must be added")
+                input.reportValidity();
+            }
+        })
+        // e.preventDefault();
+    })
+
+}
 
 
 
